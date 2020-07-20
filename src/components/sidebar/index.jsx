@@ -21,7 +21,6 @@ class Sidebar extends React.Component {
                         placeholder='Search'
                         value={this.props.searchTerm}
                         onChange={event => this.props.handleSearch(event.target.value)} />
-
                     <Button
                         color='success'
                         className='ml-2'

@@ -40,7 +40,7 @@ class PollForm extends React.Component {
 
     createOption = () => {
         const { options } = this.state
-        if (options.length < 6) {
+        if (options.length < 5) {
             options.push({
                 id: shortid.generate(),
                 value: '',
@@ -48,7 +48,7 @@ class PollForm extends React.Component {
             })
             this.setState({ options })
         } else {
-            alert('You can create max 6 options')
+            alert('You can create max 5 options')
         }
     }
 

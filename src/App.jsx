@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 import POLLS from './data/polls'
 import MainContent from './components/main-content/index'
 import Sidebar from './components/sidebar/index'
+import MainOpinion from './components/see-opinion/index'
 
 class App extends React.Component {
   state = {
@@ -99,6 +100,15 @@ class App extends React.Component {
               getOpinion={this.getOpinion}
               deletePoll={this.deletePoll}
               updatePoll={this.updatePoll} />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={8}>
+            <MainOpinion
+              poll={this.state.selectedPoll}
+            />
+          </Col>
+          <Col>
           </Col>
         </Row>
       </Container>
