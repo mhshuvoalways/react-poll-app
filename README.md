@@ -1,6 +1,6 @@
 # React-Poll-App
 
-This is a simple react poll app with core react.
+This is a project template for mern apps. It lives at https://react-poll-app-mhs.netlify.app
 
 ## Get started
 
