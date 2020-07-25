@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 import POLLS from './data/polls'
 import MainContent from './components/main-content/index'
 import Sidebar from './components/sidebar/index'
-import MainOpinion from './components/see-opinion/index'
+// import MainOpinion from './components/see-opinion/index'
 
 class App extends React.Component {
   state = {
@@ -102,15 +102,15 @@ class App extends React.Component {
               updatePoll={this.updatePoll} />
           </Col>
         </Row>
-        <Row>
-          <Col md={8}>
+        {/* <Row>
+          <Col>
             <MainOpinion
               poll={this.state.selectedPoll}
             />
           </Col>
           <Col>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     )
   }
