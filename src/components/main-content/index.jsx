@@ -12,7 +12,6 @@ class MainContent extends React.Component {
         this.setState({ openModal: !this.state.openModal })
     }
 
-
     render() {
         if (Object.keys(this.props.poll).length === 0) {
             return (

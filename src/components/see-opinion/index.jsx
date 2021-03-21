@@ -3,17 +3,12 @@ import { Button, ButtonGroup, ListGroup, ListGroupItem } from 'reactstrap'
 
 class MainOpinion extends React.Component {
     state = {
-        opis: []
-    }
-
-    componentDidMount() {
-        if (Object.keys(this.props.poll).length > 0) {
-            return this.setState({ opis: this.props.poll.opinions.map(opi => opi.selectedOption) })
-        }
+        name: []
     }
 
     handleOpinion = (opId) => {
-        const polid = this.state.opis.find(opi => opi.selectedOption === opId)
+        const polid = this.props.poll.opinions.filter(opi => opi.id === opId)
+        console.log(polid)
         this.setState({ name: polid })
     }
 
@@ -25,7 +20,6 @@ class MainOpinion extends React.Component {
                 </div>
             )
         }
-
         return (
             <div className='mt-5'>
                 <h3>See Opinion</h3>
@@ -39,7 +33,11 @@ class MainOpinion extends React.Component {
                     ))}
                 </ButtonGroup>
                 <ListGroup>
-                    {console.log(this.state.opis)}
+                {this.state.name.map(na => (
+                    <ListGroupItem>
+                        {na.name}
+                    </ListGroupItem>
+                ))}
                 </ListGroup>
             </div>
         )

@@ -57,8 +57,6 @@ class PollForm extends React.Component {
         if (options.length > 2) {
             options.splice(index, 1)
             this.setState({ options })
-        } else {
-            alert('You must have at least two options')
         }
     }
 
@@ -148,3 +146,5 @@ class PollForm extends React.Component {
 }
 
 export default PollForm
+
+

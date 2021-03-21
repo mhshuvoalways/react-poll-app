@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 import POLLS from './data/polls'
 import MainContent from './components/main-content/index'
 import Sidebar from './components/sidebar/index'
-// import MainOpinion from './components/see-opinion/index'
+import MainOpinion from './components/see-opinion/index'
 
 class App extends React.Component {
   state = {
@@ -71,18 +71,15 @@ class App extends React.Component {
     poll.totalVote++
     option.vote++
     const opinion = {
-      id: shortid.generate(),
+      id: option.id,
       name: response.name,
       selectedOption: response.selectedOption
     }
-
     poll.opinions.push(opinion)
     this.setState({ polls })
   }
 
   render() {
-    console.log(this.state);
-
     return (
       <Container className='my-5'>
         <Row>
@@ -102,7 +99,7 @@ class App extends React.Component {
               updatePoll={this.updatePoll} />
           </Col>
         </Row>
-        {/* <Row>
+        <Row>
           <Col>
             <MainOpinion
               poll={this.state.selectedPoll}
@@ -110,7 +107,7 @@ class App extends React.Component {
           </Col>
           <Col>
           </Col>
-        </Row> */}
+        </Row>
       </Container>
     )
   }
