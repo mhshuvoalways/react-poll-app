@@ -1,6 +1,6 @@
 import React from 'react';
 import shortid from 'shortid'
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col, Toast, ToastBody, ToastHeader } from 'reactstrap'
 import POLLS from './data/polls'
 import MainContent from './components/main-content/index'
 import Sidebar from './components/sidebar/index'
@@ -10,7 +10,8 @@ class App extends React.Component {
   state = {
     polls: [],
     selectedPoll: {},
-    searchTerm: ''
+    searchTerm: '',
+    toast: false
   }
 
   componentDidMount() {
@@ -24,7 +25,10 @@ class App extends React.Component {
     poll.opinions = []
 
     // this.setState({ polls: [...this.state.polls, poll] })
-    this.setState({ polls: this.state.polls.concat(poll) })
+    this.setState({
+      polls: this.state.polls.concat(poll),
+      toast: true
+    })
   }
 
   updatePoll = updatePoll => {
@@ -35,14 +39,21 @@ class App extends React.Component {
     poll.description = updatePoll.description
     poll.options = updatePoll.options
 
-    this.setState({ polls })
+    this.setState(
+      {
+        polls,
+        toast: true
+      }
+
+    )
   }
 
   deletePoll = pollId => {
     const polls = this.state.polls.filter(poll => poll.id !== pollId)
     this.setState({
       polls,
-      selectedPoll: {}
+      selectedPoll: {},
+      toast: true
     })
   }
 
@@ -76,12 +87,22 @@ class App extends React.Component {
       selectedOption: response.selectedOption
     }
     poll.opinions.push(opinion)
-    this.setState({ polls })
+    this.setState({ polls, toast: true })
+  }
+
+  toggle = () => {
+    this.setState({ toast: false })
   }
 
   render() {
     return (
       <Container className='my-5'>
+        <div className='my-3'>
+          <Toast isOpen={this.state.toast}>
+            <ToastHeader toggle={this.toggle}>Message</ToastHeader>
+            <ToastBody>Successfully Done</ToastBody>
+          </Toast>
+        </div>
         <Row>
           <Col md={4}>
             <Sidebar
