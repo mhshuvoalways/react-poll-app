@@ -1,6 +1,7 @@
 import React from 'react';
+import './App.css'
 import shortid from 'shortid'
-import { Container, Row, Col, Toast, ToastBody, ToastHeader } from 'reactstrap'
+import { Container, Row, Col, Alert } from 'reactstrap'
 import POLLS from './data/polls'
 import MainContent from './components/main-content/index'
 import Sidebar from './components/sidebar/index'
@@ -11,7 +12,11 @@ class App extends React.Component {
     polls: [],
     selectedPoll: {},
     searchTerm: '',
-    toast: false
+    alert: {
+      init: false,
+      color: '',
+      msg: ''
+    }
   }
 
   componentDidMount() {
@@ -27,8 +32,19 @@ class App extends React.Component {
     // this.setState({ polls: [...this.state.polls, poll] })
     this.setState({
       polls: this.state.polls.concat(poll),
-      toast: true
+      alert: {
+        init: true,
+        color: 'primary',
+        msg: 'Create Succsessfull'
+      }
     })
+    setTimeout(() => {
+      this.setState({
+        alert: {
+          init: false
+        }
+      })
+    }, 4000)
   }
 
   updatePoll = updatePoll => {
@@ -39,13 +55,21 @@ class App extends React.Component {
     poll.description = updatePoll.description
     poll.options = updatePoll.options
 
-    this.setState(
-      {
-        polls,
-        toast: true
+    this.setState({
+      polls,
+      alert: {
+        init: true,
+        color: 'secondary',
+        msg: 'Update Succsessfull'
       }
-
-    )
+    })
+    setTimeout(() => {
+      this.setState({
+        alert: {
+          init: false
+        }
+      })
+    }, 4000)
   }
 
   deletePoll = pollId => {
@@ -53,8 +77,19 @@ class App extends React.Component {
     this.setState({
       polls,
       selectedPoll: {},
-      toast: true
+      alert: {
+        init: true,
+        color: 'danger',
+        msg: 'Delete Succsessfull'
+      }
     })
+    setTimeout(() => {
+      this.setState({
+        alert: {
+          init: false
+        }
+      })
+    }, 4000)
   }
 
   selectPoll = pollId => {
@@ -87,21 +122,39 @@ class App extends React.Component {
       selectedOption: response.selectedOption
     }
     poll.opinions.push(opinion)
-    this.setState({ polls, toast: true })
+    this.setState({
+      polls,
+      alert: {
+        init: true,
+        color: 'primary',
+        msg: 'Vote Succsessfull'
+      }
+    })
+    setTimeout(() => {
+      this.setState({
+        alert: {
+          init: false
+        }
+      })
+    }, 4000)
   }
 
   toggle = () => {
-    this.setState({ toast: false })
+    this.setState({ alert: false })
+  }
+
+  dndHandler = dnd => {
+    this.setState({ polls: dnd })
   }
 
   render() {
     return (
       <Container className='my-5'>
-        <div className='my-3'>
-          <Toast isOpen={this.state.toast}>
-            <ToastHeader toggle={this.toggle}>Message</ToastHeader>
-            <ToastBody>Successfully Done</ToastBody>
-          </Toast>
+        <div className='my-3 text-center'>
+          {this.state.alert.init ?
+            <Alert color={this.state.alert.color}>
+              {this.state.alert.msg}
+            </Alert> : null}
         </div>
         <Row>
           <Col md={4}>
@@ -110,7 +163,8 @@ class App extends React.Component {
               selectPoll={this.selectPoll}
               handleSearch={this.handleSearch}
               searchTerm={this.state.searchTerm}
-              addNewPoll={this.addNewPoll} />
+              addNewPoll={this.addNewPoll}
+              dndHandler={this.dndHandler} />
           </Col>
           <Col md={8}>
             <MainContent

@@ -32,7 +32,8 @@ class Sidebar extends React.Component {
                 <hr />
                 <PollList
                     polls={this.props.polls}
-                    selectPoll={this.props.selectPoll} />
+                    selectPoll={this.props.selectPoll}
+                    dndHandler={this.props.dndHandler} />
 
                 <Modal
                     isOpen={this.state.openModal}

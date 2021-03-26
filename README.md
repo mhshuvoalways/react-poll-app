@@ -2,6 +2,24 @@
 
 This is a project template for mern apps. It lives at https://react-poll-app-mhs.netlify.app
 
+```bash
+Feature:
+• React Drag and Drop
+• Search Polls
+• Create Polls
+• Delete Polls
+• Update Polls
+• Vote
+
+Technology:
+• HTML
+• CSS
+• ReactStrap
+• Reactjs
+• React Beautiful Drag and Drop
+• Netlify
+```
+
 ## Get started
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*

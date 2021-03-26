@@ -8,7 +8,6 @@ class MainOpinion extends React.Component {
 
     handleOpinion = (opId) => {
         const polid = this.props.poll.opinions.filter(opi => opi.id === opId)
-        console.log(polid)
         this.setState({ name: polid })
     }
 
@@ -33,11 +32,11 @@ class MainOpinion extends React.Component {
                     ))}
                 </ButtonGroup>
                 <ListGroup>
-                {this.state.name.map(na => (
-                    <ListGroupItem>
-                        {na.name}
-                    </ListGroupItem>
-                ))}
+                    {this.state.name.map(na => (
+                        <ListGroupItem key={na.id}>
+                            {na.name}
+                        </ListGroupItem>
+                    ))}
                 </ListGroup>
             </div>
         )
