@@ -1,7 +1,7 @@
 # React-Poll-App
 
 This is a simple functional based react poll app. </br>
-It lives at https://react-poll-app-mhs.netlify.app
+It lives at https://poll-vote.netlify.app
 
 ```bash
 Feature:
