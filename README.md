@@ -1,6 +1,7 @@
 # React-Poll-App
 
-This is a project template for mern apps. It lives at https://react-poll-app-mhs.netlify.app
+This is a simple functional based react poll app. </br>
+It lives at https://react-poll-app-mhs.netlify.app
 
 ```bash
 Feature:
@@ -12,7 +13,6 @@ Feature:
 • Vote
 
 Technology:
-• HTML
 • CSS
 • ReactStrap
 • Reactjs
